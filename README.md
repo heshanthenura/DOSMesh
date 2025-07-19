@@ -2,7 +2,7 @@
 
 ## **DoS Mesh**
 
-**DoS Mesh** is a lightweight distributed denial-of-service (DDoS) simulation system built in Go. It includes:
+**DoS Mesh** is a lightweight distributed denial-of-service (DDoS) system built in Go. It includes:
 
 - A **Server** to control multiple connected clients (bots)
 - **Client Bots** that receive commands and execute ICMP flood attacks
@@ -90,7 +90,7 @@ This helps simulate a distributed attack that remains under the radar and avoids
 
 > ❗ **Note:** This project is still under development and not production-ready.
 
-While **DoS Mesh** currently supports basic command-and-control for ICMP flood simulations, there are several areas that need improvement:
+While **DoS Mesh** currently supports basic command-and-control for ICMP flood attack, there are several areas that need improvement:
 
 - 🔒 **Error handling:** Current error reporting is minimal. More robust logging and recovery mechanisms are needed.
 - 🌐 **Dynamic target updates:** Bots currently require manual changes to set the target. A command to change targets remotely is planned.
